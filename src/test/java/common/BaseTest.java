@@ -1,6 +1,8 @@
 package common;
 
+import java.io.InputStream;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -16,11 +18,19 @@ import org.testng.annotations.Parameters;
 public class BaseTest {
 	protected WebDriver driver;
 	protected Logger log;
+	protected Properties property;
 
 	@Parameters("browser")
 	@BeforeClass
 	protected void beforeClass(String browserName) {
 		log = LogManager.getLogger(this.getClass());
+
+		property = new Properties();
+		try (InputStream file = this.getClass().getClassLoader().getResourceAsStream("config.properties")) {
+			property.load(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		switch (browserName.toLowerCase()) {
 		case "chrome":
@@ -39,7 +49,8 @@ public class BaseTest {
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
-		driver.get("https://demo.nopcommerce.com/");
+		driver.get(property.getProperty("pageUrl"));
+		log.info(property.getProperty("pageUrl"));
 	}
 
 	@AfterClass
