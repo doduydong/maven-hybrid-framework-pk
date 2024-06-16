@@ -21,6 +21,12 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath = "//button[contains(@class,'login-button')]")
 	private WebElement loginButton;
 
+	@FindBy(xpath = "//div[contains(@class,'validation-summary-errors')]")
+	private WebElement loginErrorMessage;
+
+	@FindBy(xpath = "//a[@class='ico-login']")
+	private WebElement loginLink;
+
 	public void sendKeysToEmailTextbox(String emailAddress) {
 		emailTextbox.sendKeys(emailAddress);
 	}
@@ -31,6 +37,14 @@ public class LoginPage extends BasePage {
 
 	public void clickLoginButton() {
 		loginButton.click();
+	}
+
+	public String getLoginErrorMessage() {
+		return loginErrorMessage.getText();
+	}
+
+	public void clickLoginLink() {
+		loginLink.click();
 	}
 
 }
