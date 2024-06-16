@@ -68,4 +68,14 @@ public class RegisterPage extends BasePage {
 		continueButton.click();
 	}
 
+	public void registerNewAccount(String firstName, String lastName, String emailAddress, String password) {
+		sendKeysToFirstNameTextbox(firstName);
+		sendKeysToLastNameTextbox(lastName);
+		sendKeysToEmailTextbox(emailAddress);
+		sendKeysToPasswordTextbox(password);
+		sendKeysToConfirmPasswordTextbox(password);
+		clickRegisterButton();
+		clickContinueButton();
+	}
+
 }

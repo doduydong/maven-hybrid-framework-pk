@@ -18,12 +18,26 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//a[@class='ico-logout']")
 	private WebElement logoutLink;
 
+	@FindBy(xpath = "//a[@class='ico-login']")
+	private WebElement loginLink;
+
+	@FindBy(xpath = "//a[@class='ico-account']")
+	private WebElement myAccountLink;
+
 	public void clickRegisterLink() {
 		registerLink.click();
 	}
 
 	public void clickLogoutLink() {
 		logoutLink.click();
+	}
+
+	public void clickLoginLink() {
+		loginLink.click();
+	}
+
+	public boolean isMyAccountLink() {
+		return myAccountLink.isDisplayed();
 	}
 
 }
