@@ -9,7 +9,7 @@ import pageObjects.RegisterPage;
 
 public class TC_01_Register extends BaseTest {
 
-	@Test
+	@Test(groups = { "regression", "master" })
 	public void Register() {
 		log.info("Register Testing");
 		HomePage homePage = new HomePage(driver);

@@ -14,7 +14,7 @@ public class TC_02_Login extends BaseTest {
 	private String emailAddress = getRandomAlphanumeric() + "@gmail.com";
 	private String password = getRandomAlphanumeric();
 
-	@Test
+	@Test(groups = { "sanity", "master" })
 	public void Login() {
 		log.info("Login Testing");
 

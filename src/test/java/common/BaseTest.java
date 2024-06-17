@@ -21,7 +21,7 @@ public class BaseTest {
 	protected Properties property;
 
 	@Parameters("browser")
-	@BeforeClass
+	@BeforeClass(groups = { "master", "sanity", "regression", "dataProvider" })
 	protected void beforeClass(String browserName) {
 		log = LogManager.getLogger(this.getClass());
 
@@ -53,7 +53,7 @@ public class BaseTest {
 		log.info(property.getProperty("pageUrl"));
 	}
 
-	@AfterClass
+	@AfterClass(groups = { "master", "sanity", "regression", "dataProvider" })
 	protected void afterClass() {
 		driver.quit();
 	}

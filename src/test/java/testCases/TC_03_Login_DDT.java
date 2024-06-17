@@ -12,7 +12,7 @@ public class TC_03_Login_DDT extends BaseTest {
 
 	// *Pre-condition: register account by valid data in Excel file
 
-	@Test(dataProvider = "LoginData", dataProviderClass = DataProviders.class)
+	@Test(dataProvider = "LoginData", dataProviderClass = DataProviders.class, groups = "dataProvider")
 	public void Login(String emailAddress, String password, String result) {
 		log.info("Login Testing");
 		HomePage homePage = new HomePage(driver);
