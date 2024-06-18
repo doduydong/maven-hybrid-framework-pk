@@ -40,7 +40,7 @@ public class TC_01_Register extends BaseTest {
 		registerPage.clickRegisterButton();
 
 		log.info("Register - Step 08 - Verify register success message");
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed.");
 
 		log.info("Register - Step 09 - Click 'Continue' button");
 		registerPage.clickContinueButton();

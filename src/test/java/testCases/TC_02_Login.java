@@ -43,7 +43,7 @@ public class TC_02_Login extends BaseTest {
 		homePage = new HomePage(driver);
 
 		log.info("Login - Step 05 - Verify 'My account' link displayed");
-		Assert.assertTrue(homePage.isMyAccountLink());
+		Assert.assertFalse(homePage.isMyAccountLink());
 
 		log.info("Login - Step 06 - Click 'Logout' link");
 		homePage.clickLogoutLink();

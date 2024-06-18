@@ -20,6 +20,10 @@ public class BaseTest {
 	protected Logger log;
 	protected Properties property;
 
+	public WebDriver getDriver() {
+		return driver;
+	}
+
 	@Parameters("browser")
 	@BeforeClass(groups = { "master", "sanity", "regression", "dataProvider" })
 	protected void beforeClass(String browserName) {
