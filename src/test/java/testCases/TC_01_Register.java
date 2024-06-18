@@ -10,9 +10,51 @@ import pageObjects.RegisterPage;
 public class TC_01_Register extends BaseTest {
 
 	@Test(groups = { "regression", "master" })
-	public void Register() {
-		log.info("Register Testing");
+	public void Register_01() {
+		log.info("Register 01 Testing");
 		HomePage homePage = new HomePage(driver);
+
+		log.info("Register - Step 01 - Click 'Register' link");
+		homePage.clickRegisterLink();
+
+		RegisterPage registerPage = new RegisterPage(driver);
+
+		log.info("Register - Step 02 - SendKeys to 'FirstName' textbox");
+		registerPage.sendKeysToFirstNameTextbox(getRandomString());
+
+		log.info("Register - Step 03 - SendKeys to 'LastName' textbox");
+		registerPage.sendKeysToLastNameTextbox(getRandomString());
+
+		log.info("Register - Step 04 - SendKeys to 'Email' textbox");
+		registerPage.sendKeysToEmailTextbox(getRandomAlphanumeric() + "@gmail.com");
+
+		String password = getRandomAlphanumeric();
+
+		log.info("Register - Step 05 - SendKeys to 'Password' textbox");
+		registerPage.sendKeysToPasswordTextbox(password);
+
+		log.info("Register - Step 06 - SendKeys to 'Confirm Password' textbox");
+		registerPage.sendKeysToConfirmPasswordTextbox(password);
+
+		log.info("Register - Step 07 - Click 'Register' button");
+		registerPage.clickRegisterButton();
+
+		log.info("Register - Step 08 - Verify register success message");
+		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed.");
+
+		log.info("Register - Step 09 - Click 'Continue' button");
+		registerPage.clickContinueButton();
+	}
+
+	@Test(groups = { "regression", "master" })
+	public void Register_02() {
+		HomePage homePage = new HomePage(driver);
+
+		log.info("Register - Pre-condition - Click 'Logout' link");
+		homePage.clickLogoutLink();
+
+		log.info("Register 02 Testing");
+		homePage = new HomePage(driver);
 
 		log.info("Register - Step 01 - Click 'Register' link");
 		homePage.clickRegisterLink();

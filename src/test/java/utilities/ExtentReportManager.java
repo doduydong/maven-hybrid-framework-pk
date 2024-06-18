@@ -54,20 +54,20 @@ public class ExtentReportManager implements ITestListener {
 
 		List<String> includedGroups = testContext.getCurrentXmlTest().getIncludedGroups();
 		if (!includedGroups.isEmpty()) {
-			extent.setSystemInfo("Test-Groups", includedGroups.toString());
+			extent.setSystemInfo("Groups", includedGroups.toString());
 		}
 	}
 
 	public void onTestSuccess(ITestResult result) {
 		test = extent.createTest(result.getTestClass().getName());
 		test.assignCategory(result.getMethod().getGroups());
-		test.log(Status.PASS, result.getName() + " got successfully executed");
+		test.log(Status.PASS, result.getName() + " PASSED");
 	}
 
 	public void onTestFailure(ITestResult result) {
 		test = extent.createTest(result.getTestClass().getName());
 		test.assignCategory(result.getMethod().getGroups());
-		test.log(Status.FAIL, result.getName() + " got failed");
+		test.log(Status.FAIL, result.getName() + " FAILED");
 		test.log(Status.INFO, result.getThrowable().getMessage());
 		Object testInstance = result.getInstance();
 		WebDriver driver = ((BaseTest) testInstance).getDriver();
@@ -78,7 +78,7 @@ public class ExtentReportManager implements ITestListener {
 	public void onTestSkipped(ITestResult result) {
 		test = extent.createTest(result.getTestClass().getName());
 		test.assignCategory(result.getMethod().getGroups());
-		test.log(Status.SKIP, result.getName() + " got skipped");
+		test.log(Status.SKIP, result.getName() + " SKIPPED");
 		test.log(Status.INFO, result.getThrowable().getMessage());
 	}
 
